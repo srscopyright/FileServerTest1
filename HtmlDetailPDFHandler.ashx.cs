@@ -1,4 +1,7 @@
-﻿using System;
+// =====COPYRIGHT=====
+// github http copyright text
+// =====COPYRIGHT=====
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

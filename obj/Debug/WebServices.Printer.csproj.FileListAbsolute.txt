@@ -1,0 +1,9 @@
+E:\Working\Printer\Main\Source\WebServices.Printer\obj\Debug\ResolveAssemblyReference.cache
+E:\Working\Printer\Main\Source\WebServices.Printer\obj\Debug\Srs.WebPlatform.WebServices.Printer.pdb
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\bin\ABCpdf8-64.dll
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\Srs.WebPlatform.WebServices.Printer.dll
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\Srs.WebPlatform.WebServices.Printer.pdb
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\ABCpdf.dll
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\Srs.WebPlatform.Common.dll
+E:\Working\Printer\Main\Source\WebServices.Printer\obj\Debug\Srs.WebPlatform.WebServices.Printer.dll
+E:\Working\Printer\Main\Source\WebServices.Printer\bin\Srs.Content.Common.dll

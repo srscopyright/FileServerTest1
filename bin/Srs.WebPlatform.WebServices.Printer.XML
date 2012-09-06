@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Srs.WebPlatform.WebServices.Printer</name>
+    </assembly>
+    <members>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.PrintService">
+            <summary>
+            This is that actual implementation of the PrintService
+            </summary>
+            <summary>
+            Implementation of the PrintService.
+            </summary>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.IPrintServiceV1">
+            <summary>
+            WCF interface for the printer
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.IPrintServiceV1.ConvertUrlToPdf(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns a PDF stream that rendered from an URL
+            The url need is a html page (.aspx, .html, .htm, .asp, .jsp...)
+            </summary>
+            <param name="sessionTokenId">SessionTokenId given by user to authorize</param>
+            <param name="url">The URL of a page that will be rendered</param>
+            <param name="marginLeft">Value in integer that indicates the margin in the left of pdf file</param>
+            <param name="marginTop">Value in integer that indicates the margin in the top of pdf file</param>
+            <returns>Returns a PDF byte[]</returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.IPrintServiceV1.GetNumberOfPages(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sessionTokenId"></param>
+            <param name="url"></param>
+            <param name="marginLeft"></param>
+            <param name="marginTop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.IPrintServiceV1.ConvertUrlToImage(System.String,System.String,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Return an image the of a html page
+            A html file may be generated to a punk of images
+            This method return a single image that specific in pageNumber parameter
+            </summary>
+            <param name="sessionTokenId">SessionTokenId given by user to authorize</param>
+            <param name="url">The URL of a page that will be rendered</param>
+            <param name="marginLeft">Value in integer that indicates the margin in the left of pdf file</param>
+            <param name="marginTop">Value in integer that indicates the margin in the top of pdf file</param>
+            <param name="format">Format of return image, currently we support BMP, PNG, GIF, JPG, JPEG</param>
+            <param name="page">The specific page that return to user. The total number of pages can be get by call method GetNumberOfPages</param>
+            <returns>Return an image stream</returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.Srs#WebPlatform#WebServices#Printer#IPrintServiceV1#ConvertUrlToPdf(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Convert the HTML code from the specified URL to a PDF document and send the 
+            document as an attachment to the browser
+            </summary>
+            <param name="sessionTokenId">SessionTokenId given by user to authorize</param>
+            <param name="url">The URL of a page that will be rendered</param>
+            <param name="marginLeft"></param>
+            <param name="marginTop"></param>
+            <returns>a byte array that rendered as a PDF, will be null if error</returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.Srs#WebPlatform#WebServices#Printer#IPrintServiceV1#GetNumberOfPages(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sessionTokenId"></param>
+            <param name="url"></param>
+            <param name="marginLeft"></param>
+            <param name="marginTop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.Srs#WebPlatform#WebServices#Printer#IPrintServiceV1#ConvertUrlToImage(System.String,System.String,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Return an image the of a html page
+            A html file may be generated to a punk of images
+            This method return a single image that specific in pageNumber parameter
+            </summary>
+            <param name="sessionTokenId">SessionTokenId given by user to authorize</param>
+            <param name="url">The URL of a page that will be rendered</param>
+            <param name="marginLeft">Value in integer that indicates the margin in the left of pdf file</param>
+            <param name="marginTop">Value in integer that indicates the margin in the top of pdf file</param>
+            <param name="format">Format of return image, currently we support BMP, PNG, GIF, JPG, JPEG</param>
+            <param name="page">The specific page that return to user. The total number of pages can be got by call method GetNumberOfPages</param>
+            <returns>Return an image stream</returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.IsQualifiedUrl(System.String)">
+            <summary>
+            Check if an url is qualified to generate a pdf or images
+            </summary>
+            <param name="url">Input url</param>
+            <returns>Returns a boolean value to indicate if an url is qulified or not. True is qualified, False is not qualified.</returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.LogMonitorCPU(System.String,System.String)">
+            <summary>
+            This method to add log to SRS Logger to monitor the CPU hang 100%
+            </summary>
+            <param name="stackTrace"></param>
+            <param name="detail"></param>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.PrintService.IsPdfUrl(System.String)">
+            <summary>
+            This method check the url that is a pdf url.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.IHeartBeatMonitoringServiceV1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.IHeartBeatMonitoringServiceV1.HeartBeat">
+            <summary>
+            Check all method from Service Printer such as
+                + GetNumberOfPage()
+                + ConvertURLToImage
+                  - ConvertImageURLToImage
+                  - ConvertPDFURLToImage
+                + ConvertURLToPDF
+                  - ConvertImageURLToPDF
+                  - ConvertPDFURLToPDF
+            </summary>
+            <returns>
+                True  : if all of them are pass
+                False : if one of them is fail
+            </returns>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.Global">
+            <summary>
+            Global.asax class
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.Global.Application_Error(System.Object,System.EventArgs)">
+            <summary>
+            Application_Error event.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Arguments</param>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.AzureHostFactory">
+            <summary>
+            Used to create the service host within Windows Azure using the endpoints that all SRS services should
+            have available.
+            A custom host ensures consistency across web services and guarantees a certain level of availability
+            to SRS customers.
+            The only difference between this host factory and the CustomHostFactory in the SRS WP is that this one
+            includes the UseRequestHeadersForMetadataAddressBehavior behavior to enable generating a service
+            reference or a WSDL from a load-balanced WCF service hosted in the DevFabric or in Windows Azure.
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.AzureHostFactory.CreateServiceHost(System.Type,System.Uri[])">
+            <summary>
+            Creates a ServiceHost for a specified type of service with a specific base address.
+            </summary>
+            <param name="serviceType">Specifies the type of service to host.</param>
+            <param name="baseAddresses">The Array of type Uri that contains the base addresses for the service hosted.</param>
+            <returns>A ServiceHost for the type of service specified with a specific base address.</returns>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.HtmlDetailHandler">
+            <summary>
+            Summary description for HtmlDetailHandler
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.HtmlDetailHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:Srs.WebPlatform.WebServices.Printer.HtmlDetailHandler.IsReusable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.StaticConstants">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_GetPageNumberFormat">
+            <summary>
+            Const_GetPageNumberFormat
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ConvertURLToImageFormat">
+            <summary>
+            Const_ConvertURLToImageFormat
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ConvertURLToPDFFormat">
+            <summary>
+            Const_ConvertURLToPDFFormat
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_PageExpectToPrint">
+            <summary>
+            Const_PageExpectToPrint
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ExpectedImageFormat">
+            <summary>
+            Const_ExpectedImageFormat
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ExpectedMarginLeft">
+            <summary>
+            Const_ExpectedMarginLeft
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ExpectedMarginTop">
+            <summary>
+            Const_ExpectedMarginTop
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_ImageURLForTest">
+            <summary>
+            Const_ImageURLForTest
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_PDFURLForTest">
+            <summary>
+            Const_PDFURLForTest
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_DummySessionToken">
+            <summary>
+            Const_DummySessionToken
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_Get">
+            <summary>
+            Const_Get
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_PDF">
+            <summary>
+            Const_PDF
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.StaticConstants.Const_PrinterUrl">
+            <summary>
+            Const_PrinterUrl
+            </summary>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.HeartBeatService">
+            <summary>
+            
+            </summary>
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.HeartBeatService.Srs#WebPlatform#WebServices#Printer#IHeartBeatMonitoringServiceV1#HeartBeat">
+            <summary>
+            Make sure all of servive methods are pass
+            </summary>
+            <returns>
+                True  : all Passed
+                False : fail on one of them
+            </returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.HeartBeatService.ConvertURLToImage(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            ConvertURLToImage
+            </summary>
+            <param name="sessionTokenId">sessionTokenId</param>
+            <param name="extension">extension</param>
+            <param name="url">url</param>
+            <param name="marginLeft">marginLeft</param>
+            <param name="marginTop">marginTop</param>
+            <param name="format">format</param>
+            <param name="page">page</param>
+            <returns></returns>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.HeartBeatService.GetNumberOfPages(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            GetNumberOfPages
+            </summary>
+            <param name="sessionTokenId">sessionTokenId</param>
+            <param name="extension">extension</param>
+            <param name="url">url</param>
+            <param name="marginLeft">marginLeft</param>
+            <param name="marginTop">marginTop</param>
+            <returns></returns>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.Default">
+            <summary>
+            Public Default class
+            </summary>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.form1">
+            <summary>
+            form1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.textBoxUrl">
+            <summary>
+            textBoxUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.dropDownListFormat">
+            <summary>
+            dropDownListFormat control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.textBoxMarginLeft">
+            <summary>
+            textBoxMarginLeft control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.textBoxMarginTop">
+            <summary>
+            textBoxMarginTop control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.buttonExportImage">
+            <summary>
+            buttonExportImage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.buttonExportPDF">
+            <summary>
+            buttonExportPDF control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.literalHttpStatusMessage">
+            <summary>
+            literalHttpStatusMessage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Srs.WebPlatform.WebServices.Printer.Default.literalViewer">
+            <summary>
+            literalViewer control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.Default.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Page_Load
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.Default.ButtonExportImage_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button Export Image action
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.Default.ButtonExportPdf_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button Export PDF Action
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Srs.WebPlatform.WebServices.Printer.HtmlDetailPDFHandler">
+            <summary>
+            Summary description for HtmlDetailPDFHandler
+            </summary>
+        </member>
+        <member name="M:Srs.WebPlatform.WebServices.Printer.HtmlDetailPDFHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:Srs.WebPlatform.WebServices.Printer.HtmlDetailPDFHandler.IsReusable">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

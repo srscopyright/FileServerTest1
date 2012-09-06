@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\IISSiteHost\SRSPrinter" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="08/03/2012 17:28:52" />
+    <file relUrl="HtmlDetailPDFHandler.ashx" publishTime="08/02/2012 15:49:40" />
+    <file relUrl="HtmlDetailHandler.ashx" publishTime="07/31/2012 15:31:30" />
+    <file relUrl="bin/ABCpdf.dll" publishTime="07/31/2012 14:09:24" />
+    <file relUrl="Default.aspx" publishTime="07/31/2012 14:09:27" />
+    <file relUrl="bin/Srs.WebPlatform.Common.dll" publishTime="07/31/2012 14:09:01" />
+    <file relUrl="WebServices/Srs.WebPlatform.WebServices.HeartBeat.svc" publishTime="07/31/2012 14:09:29" />
+    <file relUrl="bin/Srs.WebPlatform.WebServices.Printer.pdb" publishTime="08/03/2012 17:28:10" />
+    <file relUrl="bin/Srs.WebPlatform.WebServices.Printer.dll" publishTime="08/03/2012 17:28:10" />
+    <file relUrl="bin/Srs.WebPlatform.WebServices.Printer.XML" publishTime="08/03/2012 17:28:10" />
+    <file relUrl="bin/ABCpdf8-64.dll" publishTime="07/31/2012 14:10:19" />
+    <file relUrl="Images/A00-015.pdf" publishTime="07/31/2012 14:09:31" />
+    <file relUrl="Global.asax" publishTime="07/31/2012 14:09:27" />
+    <file relUrl="jquery-1.4.2.min.js" publishTime="07/31/2012 14:09:28" />
+    <file relUrl="WebServices/Srs.WebPlatform.WebServices.Printer.svc" publishTime="07/31/2012 14:09:30" />
+    <file relUrl="Images/1090_869100.html" publishTime="07/31/2012 14:09:29" />
+    <file relUrl="bin/Srs.Content.Common.dll" publishTime="07/31/2012 15:03:22" />
+    <file relUrl="bin/bin/ABCpdf8-64.dll" publishTime="07/31/2012 14:10:19" />
+  </publishProfile>
+</publishData>
